@@ -18,32 +18,19 @@ function optionlist()
         echo $key . ". " . "$option \n";
     }
     // User Input
-    $option = readline(prompt: "Enter your option : ");
+
 };
 echo optionlist();
-
-
-
-
+$option = readline(prompt: "Enter your option : ");
 if ($option == 1) {
     echo "--------------------------------------------";
     $addIncome = readline(prompt: "Enter your income : ");
     echo optionlist();
-    echo $addIncome;
-    new addincome($addIncome);
-}
-if ($option == 2) {
-    echo "--------------------------------------------";
-    $addexpense = readline(prompt: "Enter your enxpense : ");
-    echo optionlist();
-    echo $addexpense;
-    new addincome($addIncome);
-}
-if ($option == 6) {
-    $categories = new categories("Income", "Expense");
-} elseif ($option == 8) {
-    echo "Are you want to exit yes/no?";
-} elseif ($option == 3) {
-    $option = readline(prompt: "Enter your option : ");
-    echo $addIncome;
+    $filepath = "data.txt";
+    if (file_exists($filepath)) {
+        file_put_contents($filepath, $addIncome);
+        echo " Taka income added successfully ";
+    } else {
+        echo "File not found";
+    }
 }
